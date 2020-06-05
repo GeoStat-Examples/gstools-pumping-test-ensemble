@@ -1,0 +1,8 @@
+|------------------ Written with ogs5py ------------------|
+#NUMERICS
+  $PCS_TYPE
+   GROUNDWATER_FLOW
+  $LINEAR_SOLVER
+   2 5 1e-14 1000 1.0 100 4
+#STOP
+|-- Written with ogs5py (1.1.0rc1) on: 2020-06-05_17-46-51 --|

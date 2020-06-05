@@ -1,0 +1,12 @@
+|------------------ Written with ogs5py ------------------|
+#BOUNDARY_CONDITION
+  $PCS_TYPE
+   GROUNDWATER_FLOW
+  $PRIMARY_VARIABLE
+   HEAD
+  $GEO_TYPE
+   POLYLINE boundary
+  $DIS_TYPE
+   CONSTANT 0.0
+#STOP
+|-- Written with ogs5py (1.1.0rc1) on: 2020-06-05_17-46-51 --|
