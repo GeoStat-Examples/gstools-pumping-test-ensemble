@@ -1,42 +1,59 @@
 [![GS-Frame](https://img.shields.io/badge/github-GeoStat_Framework-468a88?logo=github&style=flat)](https://github.com/GeoStat-Framework)
 [![Gitter](https://badges.gitter.im/GeoStat-Examples/community.svg)](https://gitter.im/GeoStat-Examples/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# Template
+# The extended Theis solution in 2D
 
-This is a template for an example repository.
 
-You can create a new example by simply clicking on "Use this template".
+## Description
 
-The included example is showing the generation of a conditioned random field ensemble
-in 1D taken from [GSTools](https://geostat-framework.readthedocs.io/projects/gstools/en/stable/examples/06_conditioned_fields/00_condition_ensemble.html#sphx-glr-examples-06-conditioned-fields-00-condition-ensemble-py).
+The extended Theis solution presented by *Zech et al. (2016)*
+reproduces the ensemble mean drawdown
+of pumping tests in heterogenous media with a log-normal transmissivity
+distribution following a Gaussian variogram.
+
+In this workflow, we demonstrate that the extended Theis solution reproduces
+the ensemble mean drawdown of pumping tests on synthetic aquifers for multiple
+parameter constellations.
+These synthetic aquifers are created with
+[GSTools](https://github.com/GeoStat-Framework/GSTools)
+and the pumping tests are simulated by
+[ogs5py](https://github.com/GeoStat-Framework/ogs5py).
+
+The extended Theis solution was presented in:
+
+> Zech, A., Müller, S., Mai, J., Heße, F., & Attinger, S., 2016.
+> Extending theis’ solution: Using transient pumping tests to estimate parameters of aquifer heterogeneity.
+> Water Resources Research 52, 6156–617. https://dx.doi.org/10.1002/2015WR018509
 
 
 ## Structure
 
-Please try to organize your example in the given Structure
-- `data/` - here you should place your input data
+The workflow is organized by the following structure:
 - `src/` - here you should place your python scripts
-- `results/` - here your computed results and plots should be stored
-- `README.md` - please describe your example in the readme, potentially showing results
-- `LICENSE` - the default license is MIT, you can use another one if wanted
+  - `00_run_sim_mpi.sh` - bash file running `01_run_sim.py` in parallel
+  - `01_run_sim.py` - run all ensemble simulations for pumping tests
+  - `02_compare_mean.py` - generate comparision plots for the ensemble means
+  - `03_trans_plot.py` - plot a realization of a gaussian transmissivity field
+  - `04_ext_theis_compare.py` - plotting the effective Theis solution against classical Theis
+- `results/` - all produced results
 
 
 ## Python environment
 
-To make the example reproducible, it would be a good practice to provide one of
-the following files:
-- `requirements.txt` - requirements for [pip](https://pip.pypa.io/en/stable/user_guide/#requirements-files) to install all needed packages
-- `spec-file.txt` - specification file to create the original [conda environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#building-identical-conda-environments)
+Main Python dependencies are stored in `requirements.txt`:
 
+```
+gstools==1.3.0
+anaflow==1.0.1
+ogs5py==1.1.1
+matplotlib
+```
 
-## Workflow
+You can install them with `pip` (potentially in a virtual environment):
 
-After finalizing your work, you should tag the repository with a version like `v1.0`.
-
-Then, a [Zenodo](https://zenodo.org/) release will be created, so you can cite the repository in you publication.
-
-Please keep your `master` branch in line with the latest release.
-For further development use the `develop` branch and update `master` with pull-requests.
+```bash
+pip install -r requirements.txt
+```
 
 
 ## Contact
@@ -46,4 +63,4 @@ You can contact us via <info@geostat-framework.org>.
 
 ## License
 
-MIT © 2020
+MIT © 2021

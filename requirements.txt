@@ -1,2 +1,4 @@
-gstools==1.2.1
+gstools==1.3.0
+anaflow==1.0.1
+ogs5py==1.1.1
 matplotlib
