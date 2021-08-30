@@ -13,8 +13,6 @@ from matplotlib import cm  # , rc
 import anaflow as ana
 from PyPDF2 import PdfFileMerger
 
-
-# rc("text", usetex=True)
 CWD = os.path.abspath(os.path.join("..", "results"))
 
 
@@ -153,21 +151,20 @@ def plot_diff(time, rad, rt_head, et_head, para_no, path, para):
         fr"$, $\ell={para[3]}"
         fr"$"
     )
-    xlab = r"$r$ in $\mathrm{[m]}$"
-    ylab = r"$t$ in $\mathrm{[s]}$"
-    ax0.set_title(r"Ensemble mean drawdown in $\mathrm{[m]}$", pad=-5)
-    ax1.set_title(r"Effective drawdown in $\mathrm{[m]}$", pad=-5)
-    ax2.set_title(r"Absolute difference in $\mathrm{[m]}$", pad=-5)
+    xlab = r"$r$ / m"
+    ylab = r"$t$ / s"
+    ax0.set_title(r"Ensemble mean drawdown / m", pad=-5)
+    ax1.set_title(r"Effective drawdown / m", pad=-5)
+    ax2.set_title(r"Absolute difference / m", pad=-5)
     # change axes labels
-    ax0.set_xlabel(xlab)
-    ax0.set_ylabel(ylab)
-    ax1.set_xlabel(xlab)
-    ax1.set_ylabel(ylab)
-    ax2.set_xlabel(xlab)
-    ax2.set_ylabel(ylab)
     ax0.set_zlim((z_min, z_max))
     ax1.set_zlim((z_min, z_max))
     ax2.set_zlim((-1, 1))
+    for ax in [ax0, ax1, ax2]:
+        ax.set_xlabel(xlab)
+        ax.set_ylabel(ylab)
+        # ax.set_box_aspect((4, 4, 4))
+
     fig.tight_layout()
     plt.savefig(os.path.join(path, f"{para_no:04}_diff.pdf"), dpi=300)
     plt.close("all")
